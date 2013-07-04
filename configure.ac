@@ -291,6 +291,10 @@ AS_IF(
         [$CURSES_LOC],
         [ncursesw/*],[ncurses_mconf_CPPFLAGS="$ncurses_mconf_CPPFLAGS -DNCURSES_WIDECHAR=1"])
      AC_SEARCH_LIBS(
+        [setupterm],
+        [tinfo],
+        [break])
+     AC_SEARCH_LIBS(
         [initscr],
         [ncursesw ncurses curses],
         [ac_ct_curses_lib_found=yes; break])
@@ -300,10 +304,6 @@ AS_IF(
             [test "$need_curses" = "yes"],
             [AC_MSG_ERROR([could not find curses library (frontends: mconf/nconf)])],
             [has_curses=no])])
-     AC_SEARCH_LIBS(
-        [setupterm],
-        [tinfo],
-        [break])
      ncurses_LIBS="$LIBS"
      LIBS=$LIBS_old])
 
