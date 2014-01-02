@@ -16,6 +16,10 @@
 
 #include "lkc.h"
 
+#ifdef WIN32
+#  define mkdir(x, y) mkdir((x))
+#endif
+
 struct conf_printer {
 	void (*print_symbol)(FILE *, struct symbol *, const char *, void *);
 	void (*print_comment)(FILE *, const char *, void *);
