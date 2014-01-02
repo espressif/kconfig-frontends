@@ -823,6 +823,11 @@ next:
 	if (*tmpname) {
 		strcat(dirname, basename);
 		strcat(dirname, ".old");
+
+#if WIN32
+		remove(dirname);
+#endif
+
 		rename(newname, dirname);
 		if (rename(tmpname, newname))
 			return 1;
