@@ -39,3 +39,7 @@ For a list of known issues, please also refer to file docs/known-issues.txt.
 Note that, provided you have the required dependencies, all frontends are
 properly built if you link dynamically. The following just works as expected:
     ./configure && make
+
+Note: if using the git tree, or changing the autostuff sources, you'll first
+have to run:
+    autoreconf -fi
