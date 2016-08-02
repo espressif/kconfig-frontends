@@ -91,3 +91,4 @@ e062781 kconfig: do not allow more than one symbol to have 'option modules'
 3381960 kconfig: remove unused definition from scanner
 503c823 kconfig: fix bug in search results string: use strlen(gstr->s), not gstr->len
 00d4f8f xconfig: Fix the filename for GUI settings
+5d2acfc kconfig: make allnoconfig disable options behind EMBEDDED and EXPERT
