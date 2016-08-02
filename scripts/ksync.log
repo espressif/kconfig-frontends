@@ -95,3 +95,6 @@ e062781 kconfig: do not allow more than one symbol to have 'option modules'
 7eb6e34 kbuild: trivial - remove trailing empty lines
 bb66fc6 kbuild: trivial - use tabs for code indent where possible
 c40724d kconfig: lxdialog: fix spelling
+3943f42 Replace mentions of "list_struct" to "list_head"
+2d56030 kconfig: Fix warning "‘jump’ may be used uninitialized"
+e4e458b calloc/xcalloc: Fix argument order
