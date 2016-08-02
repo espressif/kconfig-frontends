@@ -94,3 +94,4 @@ e062781 kconfig: do not allow more than one symbol to have 'option modules'
 5d2acfc kconfig: make allnoconfig disable options behind EMBEDDED and EXPERT
 7eb6e34 kbuild: trivial - remove trailing empty lines
 bb66fc6 kbuild: trivial - use tabs for code indent where possible
+c40724d kconfig: lxdialog: fix spelling
