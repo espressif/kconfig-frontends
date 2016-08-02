@@ -109,3 +109,6 @@ b9fe99c kbuild: mergeconfig: move an error check to merge_config.sh
 3a975b8 merge_config.sh: improve indentation
 bc8f8f5 merge_config.sh: rename MAKE to RUNMAKE
 0a1f00a kconfig: Do not print status messages in make -s mode
+e911503 Kconfig: Remove bad inference rules expr_eliminate_dups2()
+2e0d737 kconfig: don't silently ignore unhandled characters
+31847b6 kconfig: allow use of relations other than (in)equality
