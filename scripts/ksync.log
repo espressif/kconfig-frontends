@@ -159,3 +159,4 @@ be596aa Add current selection check.
 74dba80 kconfig: allow kconfig to handle longer path names
 aab24a8 kconfig: return 'false' instead of 'no' in bool function
 5b61c7b kconfig: fix qconf segfault by deleting heap objects
+6b87b70 unbreak allmodconfig KCONFIG_ALLCONFIG=...
