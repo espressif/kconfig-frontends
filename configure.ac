@@ -374,22 +374,22 @@ AS_IF(
 AS_IF(
     [test "$need_qt" = "yes" -o "$need_qt" = "auto"],
     [PKG_CHECK_MODULES(
-        [qt4],
-        [QtCore QtGui Qt3Support],
+        [Qt5],
+        [Qt5Core Qt5Gui Qt5Widgets],
         [has_qt=yes; need_moc="$need_qt"],
         [AS_IF(
             [test "$need_qt" = "yes"],
-            [AC_MSG_ERROR([could not find QT4 headers and/or libraries (frontend: qconf)])],
+            [AC_MSG_ERROR([could not find Qt5 headers and/or libraries (frontend: qconf)])],
             [has_qt=no; need_moc=no])])])
 
-AC_ARG_VAR([MOC], [Qt meta object compiler (moc) command])
+AC_ARG_VAR([MOC], [Qt5 meta object compiler (moc) command])
 AS_IF(
     [test "$need_moc" = "yes" -o "$need_moc" = "auto"],
-    [QT4_BINDIR=`$PKG_CONFIG Qt --variable bindir`
+    [QT5_BINDIR=`$PKG_CONFIG Qt5Core --variable host_bins`
      AC_PATH_PROGS(
         [MOC],
-        [moc-qt4 moc],,
-        [$QT4_BINDIR:$PATH])
+        [moc-qt5 moc],,
+        [$QT5_BINDIR:$PATH])
      AS_IF(
         [test -n "$MOC"],
         [has_moc=yes],

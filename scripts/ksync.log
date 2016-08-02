@@ -115,3 +115,44 @@ e911503 Kconfig: Remove bad inference rules expr_eliminate_dups2()
 35ffd08 kconfig: Delete unnecessary checks before the function call "sym_calc_value"
 c226456 kconfig: warn of unhandled characters in Kconfig commands
 78a6854 merge_config.sh: exit on missing input files
+1c199f2 kbuild: document recursive dependency limitation / resolution
+8328447 Remove support for QT3 and older.
+b1f8a45 Port xconfig to Qt5 - Use QMainWindow, QToolBar
+85eaf28 Port xconfig to Qt5 - Use QAction
+bea0077 Port xconfig to Qt5 - Use QFileDialog
+041fbdc Port xconfig to Qt5 - Use QList
+924bbb5 Port xconfig to Qt5 - Use QTextBrowser
+76bede8 Port xconfig to Qt5 - Use QMenu
+1ce6735 Port xconfig to Qt5 - Remove unused #include <q3dragobject.h>
+34d6320 Port xconfig to Qt5 - Replace Q3VBox with QWidget
+29a7016 Port xconfig to Qt5 - Fix layout
+92298b4 Port xconfig to Qt5 - Fix layout margin.
+9c86235 Port xconfig to Qt5 - Update QAction checkable
+780505e Port xconfig to Qt5 - Make single/split/full actions checkable.
+7653866 Port xconfig to Qt5 - Remove custom ListView classes.
+68ccb7e Port xconfig to Qt5 - Fix the code so it compiles with Qt5
+9211993 Port xconfig to Qt5 - update signals
+1019f1a Port xconfig to Qt5 - Introduce Qt4/5 version of ConfigList and ConfigItem
+59e5644 Port xconfig to Qt5 - Put back some of the old implementation.
+d5d973c Port xconfig to Qt5 - Put back some of the old implementation(part 2).
+c14fa5e Port xconfig to Qt5 - Use correct signal names.
+9bd36ed Port xconfig to Qt5 - Set ConfigView object name.
+e484fe3 Port xconfig to Qt5 - Quick workaround to bypass app crash at startup.
+a52cb32 Port xconfig to Qt5 - Tree widget set column titles.
+86c0528 Port xconfig to Qt5 - Add ConfigItem::nextItem to initializer list.
+dbf6293 Port xconfig to Qt5 - Add ConfigList::mode to initializer list.
+5c6f155 Port xconfig to Qt5 - Remove ConfigList::updateMenuList template.
+a5225e9 Port xconfig to Qt5 - Disable ConfigList soring
+d960b98 Port xconfig to Qt5 - Change ConfigItem constructor parent type.
+f999cc0 Port xconfig to Qt5 - Add horizontal scrollbar, and scroll per pixel.
+b3c48f9 Port xconfig to Qt5 - Source format.
+5c60014 Port xconfig to Qt5 - Remove some commented code.
+e336b9f1 Port xconfig to Qt5 - Add(back) lineedit editing.
+76d53cb Port xconfig to Qt5 - Add(back) one click checkbox toggle.
+5df9da9 Port xconfig to Qt5 - on Back clicked, deselect old item.
+ee7298f Port xconfig to Qt5 - Fix goParent issue.
+b4ff1de Port xconfig to Qt5 - Update copyright.
+ed94fea kconfig/merge_config.sh: Support KCONFIG_CONFIG
+2163e7b kconfig/merge_config.sh: Accept a single file
+f6aad26 kconfig: Fix copy&paste error
+be596aa Add current selection check.
