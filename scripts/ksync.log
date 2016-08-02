@@ -112,3 +112,6 @@ bc8f8f5 merge_config.sh: rename MAKE to RUNMAKE
 e911503 Kconfig: Remove bad inference rules expr_eliminate_dups2()
 2e0d737 kconfig: don't silently ignore unhandled characters
 31847b6 kconfig: allow use of relations other than (in)equality
+35ffd08 kconfig: Delete unnecessary checks before the function call "sym_calc_value"
+c226456 kconfig: warn of unhandled characters in Kconfig commands
+78a6854 merge_config.sh: exit on missing input files
