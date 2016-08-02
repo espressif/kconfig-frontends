@@ -20,7 +20,7 @@ AC_CONFIG_MACRO_DIR([scripts/.autostuff/m4])
 #----------------------------------------
 # Prepare automake
 
-# We want to allow the user to override our default program-prefix,
+# We want to allow the user to override our default program-prefix,
 # so we must set-it now, before automake has a chance to interpret
 # it, but after the options are parsed, so as not to overwrite the
 # value (if any) set by the user
