@@ -98,3 +98,6 @@ c40724d kconfig: lxdialog: fix spelling
 3943f42 Replace mentions of "list_struct" to "list_head"
 2d56030 kconfig: Fix warning "‘jump’ may be used uninitialized"
 e4e458b calloc/xcalloc: Fix argument order
+09950bc merge_config.sh: Display usage if given too few arguments
+b6a2ab2 kconfig: use va_end to match corresponding va_start
+6cd176a vfs,ext2: remove CONFIG_EXT2_FS_XIP and rename CONFIG_FS_XIP to CONFIG_FS_DAX
