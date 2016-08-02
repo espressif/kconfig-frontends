@@ -84,3 +84,10 @@ c8272fa diffconfig: Update script to support python versions 2.5 through 3.3
 6902dcc kconfig: do not special-case 'MODULES' symbol
 e062781 kconfig: do not allow more than one symbol to have 'option modules'
 86eb781 scripts/config: fix variable substitution command
+560909d Documentation/kbuild/kconfig.txt: 'make listnewconfig' replaces: yes "" | make oldconfig
+31bfb10 kconfig: add short explanation to SYMBOL_WRITE
+8d9dfe8 kconfig: fix trivial typos and update mconf documentation
+57540f1d kconfig: adjust warning message for conflicting types
+3381960 kconfig: remove unused definition from scanner
+503c823 kconfig: fix bug in search results string: use strlen(gstr->s), not gstr->len
+00d4f8f xconfig: Fix the filename for GUI settings
