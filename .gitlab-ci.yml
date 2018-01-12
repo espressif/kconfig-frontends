@@ -1,0 +1,62 @@
+stages:
+  - build
+
+build_kconfig_win:
+  stage: build
+  tags:
+    - build
+
+  image: ${DOCKER_REGISTRY}/esp32-toolchain-win-cross
+
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 week
+
+  script:
+    - export REL_NAME=mconf-`git describe --always`-win32
+    - mkdir -p extra
+    - cd extra
+    - wget https://sourceforge.net/projects/gnuwin32/files/regex/2.7/regex-2.7-lib.zip/download -O regex-2.7-lib.zip
+    - unzip regex-2.7-lib.zip
+    - wget https://sourceforge.net/projects/gnuwin32/files/regex/2.7/regex-2.7-bin.zip/download -O regex-2.7-bin.zip
+    - unzip -o regex-2.7-bin.zip
+    - wget https://sourceforge.net/projects/gnuwin32/files/libintl/0.14.4/libintl-0.14.4-lib.zip/download -O libintl-0.14.4-lib.zip
+    - unzip libintl-0.14.4-lib.zip
+    - wget https://sourceforge.net/projects/gnuwin32/files/libintl/0.14.4/libintl-0.14.4-bin.zip/download -O libintl-0.14.4-bin.zip
+    - unzip -o libintl-0.14.4-bin.zip
+    - wget https://sourceforge.net/projects/gnuwin32/files/libintl/0.14.4/libintl-0.14.4-dep.zip/download -O libintl-0.14.4-dep.zip
+    - unzip -o libintl-0.14.4-dep.zip
+    - cd ..
+    - mkdir -p build
+    - cd build
+    - >
+      cmake
+      -D CMAKE_TOOLCHAIN_FILE=../cmake/toolchain-i686-w64-mingw32.cmake
+      -D CMAKE_PREFIX_PATH="${PWD}/../extra"
+      -D CMAKE_BUILD_TYPE=MinSizeRel
+      ..
+    - make -j
+    - cd ..
+    - mkdir dist
+    - mkdir dist/${REL_NAME}
+    - cp build/bin/kconfig-mconf.exe dist/${REL_NAME}/mconf.exe
+    - cp extra/bin/libiconv2.dll dist/${REL_NAME}/
+    - cp extra/bin/libintl3.dll dist/${REL_NAME}/
+    - cp extra/bin/regex2.dll dist/${REL_NAME}/
+    - cd dist
+    - zip -r ${REL_NAME}.zip ${REL_NAME}
+    - rm -rf ${REL_NAME}
+
+build_kconfig_linux:
+  stage: build
+  tags:
+    - build
+
+  image: ${DOCKER_REGISTRY}/esp32-toolchain
+
+  script:
+    - mkdir -p build
+    - cd build
+    - cmake ..
+    - make -j
