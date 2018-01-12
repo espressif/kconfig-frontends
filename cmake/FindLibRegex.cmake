@@ -12,30 +12,27 @@ IF (LibRegex_LIBRARY)
    SET(LibRegex_FIND_QUIETLY TRUE)
 ENDIF ()
 
-# for Windows we rely on the environement variables
-# %INCLUDE% and %LIB%; FIND_LIBRARY checks %LIB%
-# automatically on Windows
-IF(WIN32)
-    FIND_LIBRARY(LibRegex_LIBRARY
-        NAMES regex
-    )
-ELSE()
-    FIND_LIBRARY(LibRegex_LIBRARY
-        NAMES intl
-        PATHS /usr/lib /usr/local/lib
-    )
-ENDIF()
+FIND_PATH(LibRegex_INCLUDE_DIR
+    NAMES "regex.h"
+)
 
-IF (LibRegex_LIBRARY)
+FIND_LIBRARY(LibRegex_LIBRARY
+    NAMES regex
+)
+
+IF (LibRegex_INCLUDE_DIR)
     SET(LIBREGEX_FOUND TRUE)
-    SET(LIBREGEX_LIBRARIES ${LibRegex_LIBRARY})
+    SET(LIBREGEX_INCLUDE_DIRS ${LibRegex_INCLUDE_DIR})
+    IF (LibRegex_LIBRARY)
+        SET(LIBREGEX_LIBRARIES ${LibRegex_LIBRARY})
+    ENDIF ()
 ELSE ()
     SET(LIBREGEX_FOUND FALSE)
 ENDIF ()
 
 IF (LIBREGEX_FOUND)
     IF (NOT LibRegex_FIND_QUIETLY)
-        MESSAGE(STATUS "Found libregex: ${LibRegex_LIBRARY}")
+        MESSAGE(STATUS "Found libregex: ${LibRegex_INCLUDE_DIR}")
     ENDIF ()
 ELSE ()
     IF (LibRegex_FIND_REQUIRED)
@@ -43,4 +40,5 @@ ELSE ()
     ENDIF ()
 ENDIF ()
 
+MARK_AS_ADVANCED(LibRegex_INCLUDE_DIR)
 MARK_AS_ADVANCED(LibRegex_LIBRARY)
