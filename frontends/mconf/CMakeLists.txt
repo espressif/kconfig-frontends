@@ -1,4 +1,10 @@
-find_package(Curses REQUIRED)
+if (NOT WIN32)
+    find_package(Curses REQUIRED)
+else(NOT WIN32)
+    set(CURSES_INCLUDE_DIRS ${pdcurses_INCLUDE_DIRS})
+    set(CURSES_NCURSES_LIBRARIES ${pdcurses_LIBRARIES})
+endif(NOT WIN32)
+
 find_package(Intl REQUIRED)
 add_definitions(${lxdialog_DEFINES})
 
