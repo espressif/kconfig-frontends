@@ -1,14 +1,14 @@
 find_package(GPERF REQUIRED)
 find_package(FLEX REQUIRED)
 find_package(BISON REQUIRED)
-find_package(LibIntl REQUIRED)
+find_package(Intl REQUIRED)
 find_package(LibRegex REQUIRED)
 
 include_directories(
 	.
 	${CMAKE_CURRENT_BINARY_DIR}
-	${LibIntl_INCLUDE_DIRS}
-	${LibRegex_INCLUDE_DIRS}
+	${Intl_INCLUDE_DIRS}
+	${LIBREGEX_INCLUDE_DIRS}
 	${LibPDCurses_INCLUDE_DIRS}
 )
 
@@ -37,7 +37,7 @@ add_dependencies(kparser hconftarget lconftarget)
 if (WIN32)
   set(kparser_LIBRARIES
     kparser
-    ${LibIntl_LIBRARY}
+    ${Intl_LIBRARY}
     ${LibRegex_LIBRARY}
 	${LibPDCurses_LIBRARY}
     CACHE INTERNAL ""

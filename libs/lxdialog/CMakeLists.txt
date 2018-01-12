@@ -1,4 +1,4 @@
-find_package(LibIntl REQUIRED)
+find_package(Intl REQUIRED)
 
 if (WIN32)
     set(lxdialog_INCLUDE_DIRS
@@ -28,7 +28,7 @@ endif ()
 add_definitions(${lxdialog_DEFINES})
 include_directories(
 	${lxdialog_INCLUDE_DIRS}
-	${LibIntl_INCLUDE_DIRS}
+	${Intl_INCLUDE_DIRS}
 )
 
 add_library(lxdialog

@@ -1,5 +1,5 @@
 find_package(Curses REQUIRED)
-find_package(LibIntl REQUIRED)
+find_package(Intl REQUIRED)
 add_definitions(${lxdialog_DEFINES})
 
 include_directories(
@@ -9,7 +9,7 @@ include_directories(
 
 include_directories(
 	${CURSES_INCLUDE_DIRS}
-	${LibIntl_INCLUDE_DIRS}
+	${Intl_INCLUDE_DIRS}
 )
 
 set(TARGET_NAME kconfig-mconf)
@@ -21,6 +21,7 @@ add_executable(${TARGET_NAME}
 target_link_libraries(${TARGET_NAME}
   ${kparser_LIBRARIES}
   ${lxdialog_LIBRARIES}
+  ${Intl_LIBRARIES}
   ${CURSES_NCURSES_LIBRARIES}
 )
 
