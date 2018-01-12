@@ -548,6 +548,8 @@ static bool zconf_endtoken(const struct kconf_id *id, int starttoken, int endtok
 		zconfnerrs++;
 		return false;
 	}
+#if 0
+//Wildcard breaks this somehow, so disabled for now. -JD
 	if (current_menu->file != current_file) {
 		zconf_error("'%s' in different file than '%s'",
 			kconf_id_strings + id->name, zconf_tokenname(starttoken));
@@ -557,6 +559,7 @@ static bool zconf_endtoken(const struct kconf_id *id, int starttoken, int endtok
 		zconfnerrs++;
 		return false;
 	}
+#endif
 	return true;
 }
 
