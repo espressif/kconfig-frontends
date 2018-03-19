@@ -13,4 +13,6 @@ The initial packaging was done by:
 The Windows port was done by:
 	"Max Holtzberg" <mh@uvc.de>
 
+ESP-IDF-specific modifications made by Espressif Systems (Shanghai) PTE LTD.
+
 For a complete list, see the commit-logs of the kconfig repository.

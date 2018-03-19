@@ -44,6 +44,7 @@ build_kconfig_win:
     - cp extra/bin/libiconv2.dll dist/${REL_NAME}/
     - cp extra/bin/libintl3.dll dist/${REL_NAME}/
     - cp extra/bin/regex2.dll dist/${REL_NAME}/
+    - cp AUTHORS COPYING README dist/${REL_NAME}
     - cd dist
     - zip -r ${REL_NAME}.zip ${REL_NAME}
     - rm -rf ${REL_NAME}
