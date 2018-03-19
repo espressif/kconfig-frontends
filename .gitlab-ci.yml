@@ -1,5 +1,6 @@
 stages:
   - build
+  - deploy
 
 build_kconfig_win:
   stage: build
@@ -53,6 +54,7 @@ build_kconfig_linux:
   stage: build
   tags:
     - build
+    - deploy
 
   image: ${DOCKER_REGISTRY}/esp32-toolchain
 
@@ -61,3 +63,29 @@ build_kconfig_linux:
     - cd build
     - cmake ..
     - make -j
+
+
+push_our_branches_to_github:
+  stage: deploy
+  tags:
+    - deploy
+  only:
+    - 4.6.x-idf
+  when: on_success
+  dependencies: []
+  variables:
+    GITHUB_PUSH_REFS: refs/remotes/origin/4.6.x-idf
+  script:
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -n $GH_PUSH_KEY > ~/.ssh/id_ed25519_base64
+    - base64 --decode --ignore-garbage ~/.ssh/id_ed25519_base64 > ~/.ssh/id_ed25519
+    - chmod 600 ~/.ssh/id_ed25519
+    - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+    - git remote remove github &>/dev/null || true
+    - git remote add github git@github.com:espressif/kconfig-frontends.git
+    # What the next line of script does: goes through the list of refs for all branches we push to github,
+    # generates a snippet of shell which is evaluated. The snippet checks CI_COMMIT_SHA against the SHA
+    # (aka objectname) at tip of each branch, and if any SHAs match then it checks out the local branch
+    # and then pushes that ref to a corresponding github branch
+    - eval $(git for-each-ref --shell bash --format 'if [ $CI_COMMIT_SHA == %(objectname) ]; then git checkout -B %(refname:strip=3); git push --follow-tags github %(refname:strip=3); fi;' $GITHUB_PUSH_REFS)
