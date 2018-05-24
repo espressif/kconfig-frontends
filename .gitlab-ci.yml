@@ -41,7 +41,7 @@ build_kconfig_win:
     - cd ..
     - mkdir dist
     - mkdir dist/${REL_NAME}
-    - cp build/bin/kconfig-mconf.exe dist/${REL_NAME}/mconf.exe
+    - cp build/bin/mconf-idf.exe dist/${REL_NAME}/
     - cp extra/bin/libiconv2.dll dist/${REL_NAME}/
     - cp extra/bin/libintl3.dll dist/${REL_NAME}/
     - cp extra/bin/regex2.dll dist/${REL_NAME}/
