@@ -18,7 +18,7 @@ include_directories(
 	${Intl_INCLUDE_DIRS}
 )
 
-set(TARGET_NAME kconfig-mconf)
+set(TARGET_NAME mconf-idf)
 
 add_executable(${TARGET_NAME}
   mconf.c
@@ -37,7 +37,7 @@ if (WIN32)
     get_filename_component(MINGW_PATH "${CMAKE_C_COMPILER}" PATH)
 endif ()
 
-# install(TARGETS mconf DESTINATION ${BIN_INSTALL_DIR})
+# install(TARGETS mconf-idf DESTINATION ${BIN_INSTALL_DIR})
 install(CODE "
    include(BundleUtilities)
    fixup_bundle(\"${EXECUTABLE}\"   \"\"   \"\")
