@@ -54,7 +54,6 @@ build_kconfig_linux:
   stage: build
   tags:
     - build
-    - deploy
 
   image: ${DOCKER_REGISTRY}/esp32-toolchain
 
