@@ -36,8 +36,9 @@ build_kconfig_win:
       -D CMAKE_TOOLCHAIN_FILE=../cmake/toolchain-i686-w64-mingw32.cmake
       -D CMAKE_PREFIX_PATH="${PWD}/../extra"
       -D CMAKE_BUILD_TYPE=MinSizeRel
+      -D REL_NAME="${REL_NAME}"
       ..
-    - make -j
+    - make -j VERBOSE=1
     - cd ..
     - mkdir dist
     - mkdir dist/${REL_NAME}

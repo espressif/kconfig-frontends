@@ -1021,6 +1021,13 @@ int main(int ac, char **av)
 
 	signal(SIGINT, sig_handler);
 
+#if defined(REL_NAME) && defined(PROG_NAME)
+	if (ac > 1 && strcmp(av[1], "-v") == 0) {
+		printf("%s version %s\n", PROG_NAME, REL_NAME);
+		return 0;
+	}
+#endif // REL_NAME && PROG_NAME
+
 	if (ac > 1 && strcmp(av[1], "-s") == 0) {
 		silent = 1;
 		/* Silence conf_read() until the real callback is set up */

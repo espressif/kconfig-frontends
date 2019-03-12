@@ -24,6 +24,8 @@ add_executable(${TARGET_NAME}
   mconf.c
 )
 
+add_definitions(-DREL_NAME="${REL_NAME}" -DPROG_NAME="${TARGET_NAME}")
+
 target_link_libraries(${TARGET_NAME}
   ${kparser_LIBRARIES}
   ${lxdialog_LIBRARIES}
