@@ -31,6 +31,7 @@ target_link_libraries(${TARGET_NAME}
   ${lxdialog_LIBRARIES}
   ${Intl_LIBRARIES}
   ${CURSES_NCURSES_LIBRARIES}
+  expand-env
 )
 
 set(EXECUTABLE "${EXECUTABLE_OUTPUT_PATH}/${TARGET_NAME}${CMAKE_EXECUTABLE_SUFFIX}")

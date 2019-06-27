@@ -10,6 +10,7 @@ include_directories(
 	${Intl_INCLUDE_DIRS}
 	${LIBREGEX_INCLUDE_DIRS}
 	${LibPDCurses_INCLUDE_DIRS}
+    ${expand-env_INCLUDE_DIRS}
 )
 
 gperf_target(hconf

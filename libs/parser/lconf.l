@@ -15,6 +15,7 @@
 #include <unistd.h>
 
 #include "lkc.h"
+#include "expand_env.h"
 
 #define START_STRSIZE	16
 
@@ -349,20 +350,8 @@ void zconf_nextfile(const char *name)
 
 void zconf_nextfiles(const char *expression)
 {
-	if (expression[0] != '$') {
-		zconf_nextfile(expression);
-		return;
-	}
-
-	const char* str = getenv(&expression[1]);
-	if (str == NULL || strlen(str) == 0) {
-		printf("%s:%d: undefined variable \"%s\"\n",
-		    zconf_curname(), zconf_lineno(), expression);
-		exit(1);
-	}
-
-	char* str_copy = strdup(str);
-	char* pos = str_copy;
+    char* str = expand_environment(expression, zconf_curname(), zconf_lineno());
+	char* pos = str;
 	const char* prev = pos;
 
 	while (*pos != '\0') {
@@ -380,7 +369,9 @@ void zconf_nextfiles(const char *expression)
 	}
 	if (pos - prev > 0) {
 		zconf_nextfile(prev);
-	}
+     }
+
+    free_expanded(str);
 }
 
 static void zconf_endfile(void)
