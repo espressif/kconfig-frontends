@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <wordexp.h>
 
 #include "lkc.h"
 
@@ -347,40 +348,19 @@ void zconf_nextfile(const char *name)
 	current_file = file;
 }
 
-void zconf_nextfiles(const char *expression)
+void zconf_nextfiles(const char *wildcard)
 {
-	if (expression[0] != '$') {
-		zconf_nextfile(expression);
-		return;
-	}
+	wordexp_t p;
+	char **w;
+	int i;
 
-	const char* str = getenv(&expression[1]);
-	if (str == NULL || strlen(str) == 0) {
-		printf("%s:%d: undefined variable \"%s\"\n",
-		    zconf_curname(), zconf_lineno(), expression);
-		exit(1);
-	}
+	wordexp(wildcard, &p, 0);
+	w = p.we_wordv;
 
-	char* str_copy = strdup(str);
-	char* pos = str_copy;
-	const char* prev = pos;
+	for (i = p.we_wordc - 1; i >= 0; i--)
+		zconf_nextfile(w[i]);
 
-	while (*pos != '\0') {
-		if (*pos != ' ') {
-			++pos;
-			continue;
-		}
-
-		*pos = '\0';
-		if (pos - prev > 0) {
-			zconf_nextfile(prev);
-		}
-		++pos;
-		prev = pos;
-	}
-	if (pos - prev > 0) {
-		zconf_nextfile(prev);
-	}
+	wordfree(&p);
 }
 
 static void zconf_endfile(void)
