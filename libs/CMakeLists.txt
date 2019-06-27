@@ -4,6 +4,7 @@ endif ()
 
 add_subdirectory(parser)
 add_subdirectory(lxdialog)
+add_subdirectory(wordexp)
 # add_subdirectory(images)
 
 
