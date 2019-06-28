@@ -350,26 +350,29 @@ void zconf_nextfile(const char *name)
 
 void zconf_nextfiles(const char *expression)
 {
+    /* Expand environment variables in 'expression' */
     char* str = expand_environment(expression, zconf_curname(), zconf_lineno());
-	char* pos = str;
-	const char* prev = pos;
 
-	while (*pos != '\0') {
-		if (*pos != ' ') {
-			++pos;
-			continue;
-		}
+    /* zconf_nextfile() processes files in LIFO order, so to keep the
+       files in the order provided we need to process the list backwards
+    */
+    if (str != NULL && strlen(str)) {
+        char* pos = str + strlen(str); // start at null terminator
 
-		*pos = '\0';
-		if (pos - prev > 0) {
-			zconf_nextfile(prev);
-		}
-		++pos;
-		prev = pos;
-	}
-	if (pos - prev > 0) {
-		zconf_nextfile(prev);
-     }
+        while (pos != str) {
+            pos--;
+            if(*pos == ' ') {
+                *pos = '\0'; // split buffer into multiple c-strings
+                if (strlen(pos + 1)) {
+                    zconf_nextfile(pos + 1);
+                }
+            }
+        }
+
+        if (strlen(str)) { // re-check as first character may have been a space
+            zconf_nextfile(str);
+        }
+    }
 
     free_expanded(str);
 }
