@@ -404,6 +404,14 @@ static int _process_key_event(void)
         }
 	case VK_BACK:
 		return KEY_BACKSPACE;
+    case VK_DOWN:
+        return KEY_DOWN;
+    case VK_UP:
+        return KEY_UP;
+    case VK_LEFT:
+        return KEY_LEFT;
+    case VK_RIGHT:
+        return KEY_RIGHT;
     }
 
     /* The system may emit Ascii or Unicode characters depending on
